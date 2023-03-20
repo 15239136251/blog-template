@@ -1,0 +1,10 @@
+/* ./your-css-folder/styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+#app {
+    background-image: url('/img/bg/bg1.png');
+    background-size: cover;
+}
