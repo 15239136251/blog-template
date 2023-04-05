@@ -96,8 +96,7 @@ export const useHomeStore = defineStore('home', {
             REQ({
                 url: '/blog-article/list?' + dataUrl,
                 method: 'GET',
-                data: {},
-                baseURL: ''
+                data: {}
             }).then((res: any) => {
                 this.articlelist = res
             })

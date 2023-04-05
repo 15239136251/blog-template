@@ -20,7 +20,6 @@ export const useNavsStore = defineStore('navs', {
         getNavList() {
             REQ({
                 url: '/blog-tab/list',
-                baseURL: '',
                 method: 'POST'
             }).then((res: any) => {
                 this.navlist = res

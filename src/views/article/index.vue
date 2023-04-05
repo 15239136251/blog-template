@@ -87,7 +87,6 @@ interface ArticleDetail {
 const getArticleDetail = () => {
     REQ({
         url: '/blog-article/id/' + id.value,
-        baseURL: '',
         method: 'GET'
     }).then((res: any) => {
         detail.value = res

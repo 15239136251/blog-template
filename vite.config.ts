@@ -15,11 +15,11 @@ export default defineConfig({
   server: {
     port: 1999,
     proxy: {
-      '/api': {
+      '/b-api': {
         target: 'http://127.0.0.1:8313/',
         changeOrigin: true,
         ws: true,
-        rewrite: (path) => path.replace(/^\/api/, "")
+        rewrite: (path) => path.replace(/^\/b-api/, "")
       }
     }
   }

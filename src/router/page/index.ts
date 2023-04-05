@@ -1,6 +1,12 @@
 import { RouteRecordRaw } from 'vue-router'
 const pages: Array<RouteRecordRaw> = [
     {
+        path: '/',
+        name: '首页',
+        redirect: '/home',
+        alias: '/home'
+    },
+    {
         path: '/404',
         name: '404',
         component: () => import( '@/components/error-page/404.vue'),
@@ -9,11 +15,6 @@ const pages: Array<RouteRecordRaw> = [
             isTab: false,
             isAuth: false
         }
-    },
-    {
-        path: '/',
-        name: '首页',
-        redirect: '/home/index'
     },
     {
         path: '/:pathMatch(.*)*',

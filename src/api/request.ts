@@ -1,11 +1,12 @@
 import axios from "./axios"
 import { ElMessage } from 'element-plus'
 
-const { VITE_BASE_URL = '' } = import.meta.env
+const { VITE_USER_NODE_ENV = '/b-api' } = import.meta.env
+console.log("🚀 ~ file: request.ts:5 ~ VITE_USER_NODE_ENV:", VITE_USER_NODE_ENV)
 
 // 请求发生错误的函数， 用于判断 statusCode 是否成功（2xx）
-const resError = (res: any, msg = '响应发生错误') =>
-    new Promise((resolve, reject) => {
+const resError = (res: any, msg = '响应发生错误') => {
+    return new Promise((resolve, reject) => {
         const {
             status,
             data: { error = {} },
@@ -23,6 +24,8 @@ const resError = (res: any, msg = '响应发生错误') =>
         ElMessage.error(`${message}（${status}）`)
         reject(new Error(message))
     })
+}
+    
 
 // 响应拦截函数，接收响应对象为参数，用于根据响应结果做出相应操作
 // 响应成功(status === 2xx)时会被调用
@@ -61,7 +64,7 @@ const REQ = async (
         url: '',
         data: {},
         method: 'GET',
-        baseURL: VITE_BASE_URL
+        baseURL: VITE_USER_NODE_ENV
     }
 ) => {
     const reqDataJSON = JSON.stringify(reqData)
@@ -69,7 +72,7 @@ const REQ = async (
         throw new Error('重复请求...')
     }
     pendingList.push(reqDataJSON)
-    const { url, data, method, baseURL = VITE_BASE_URL } = reqData
+    const { url, data, method, baseURL = VITE_USER_NODE_ENV } = reqData
     // 获取 token
     const timestamp = Date.now()
     const headerToken = {
